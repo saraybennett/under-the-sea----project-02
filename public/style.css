@@ -1,0 +1,86 @@
+html,
+body {
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background-image: url("./images/background.jpeg");
+  background-size: cover;
+  min-height: 100vh;
+}
+
+h1 {
+  font-family: "Genos", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  text-align: justify;
+  font-size: 32px;
+}
+
+/* not sure how z index stuff is working */
+
+.heading {
+  position: absolute;
+  top: 110px;
+  left: 150px;
+  /* top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  z-index: 1;
+  max-width: 500px;
+}
+
+.cursor {
+  position: absolute;
+  background: black;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+}
+
+.sea-creature-pictures {
+  z-index: 2;
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between; */
+}
+
+#plankton {
+  position: absolute;
+  top: 500px;
+  left: -200px;
+}
+
+#seaweed {
+  position: absolute;
+  top: 380px;
+  left: 40px;
+}
+
+#angler {
+  position: absolute;
+  top: 225px;
+  left: 600px;
+  transform: rotate(20deg);
+}
+
+#angel {
+  position: absolute;
+  top: 25px;
+  left: 1000px;
+  /* transform: rotate(20deg); */
+}
+
+#urchin {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  transform: rotate(110deg);
+}
+
+#eel {
+  position: absolute;
+  top: 400px;
+  left: 1000px;
+}

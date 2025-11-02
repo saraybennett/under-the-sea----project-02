@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Genos:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" href="./images/background.jpeg" as="image" />
+
+    <title>Under the Sea 🌊</title>
+  </head>
+
+  <body>
+    <div>
+      <h1 class="heading">
+        It’s the year 3000 and much has changed. Click on a creature to see how
+        marine life has evolved due to technology—you might be surprised by what
+        you find!
+      </h1>
+    </div>
+
+    <section class="sea-creature-pictures">
+      <a href="#"
+        ><img class="creature-img" id="plankton" src="./images/plankton.png"
+      /></a>
+      <a href="#">
+        <img class="creature-img" id="seaweed" src="./images/seaweed.png"
+      /></a>
+      <a href="#">
+        <img class="creature-img" id="angler" src="./images/angler.png"
+      /></a>
+      <a href="#">
+        <img class="creature-img" id="angel" src="./images/angel.png"
+      /></a>
+      <a href="#">
+        <img class="creature-img" id="urchin" src="./images/urchin.png"
+      /></a>
+      <a href="#">
+        <img class="creature-img" id="eel" src="./images/eel.png"
+      /></a>
+    </section>
+
+    <!-- load scripts -->
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
