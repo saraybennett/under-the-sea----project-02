@@ -4,6 +4,13 @@ console.log("hi");
 const testAudio = new Audio("./audio/test 4.mp3");
 const testAudioTwo = new Audio("./audio/test 2.mp3");
 const testAudioThree = new Audio("./audio/test 3.mp3");
+const planktonAudio = new Audio("./audio/plankton.mp3");
+const urchinAudio = new Audio("./audio/urchin.mp3");
+const lobAudio = new Audio("./audio/lob.mp3");
+const seaangelAudio = new Audio("./audio/seaangel.mp3");
+const jellyAudio = new Audio("./audio/jelly.mp3");
+const chordAudio = new Audio("./audio/chord.mp3");
+
 let users = {};
 let socket; //make sure this is declared in the global scope!
 let userName;
@@ -40,7 +47,7 @@ plankton.addEventListener("mousedown", (event) => {
 
   // Listen for message 'plankton' from the server if it has been pressed
   socket.on("plankton", function (data) {
-    testAudio.play();
+    planktonAudio.play();
     console.log("plankton is being pressed by:" + data.name);
   });
 });
@@ -50,8 +57,8 @@ plankton.addEventListener("mouseup", (event) => {
   socket.emit("plankton-not-pressed", { name: userName });
   // Listen for message 'plankton' from the server if it is no longer being pressed
   socket.on("plankton-not-pressed", function (data) {
-    testAudio.pause();
-    testAudio.currentTime = 0;
+    planktonAudio.pause();
+    planktonAudio.currentTime = 0;
   });
 });
 
@@ -61,13 +68,13 @@ let seaweed = document.getElementById("seaweed");
 
 seaweed.addEventListener("mousedown", (event) => {
   console.log("seaweed was clicked");
-  testAudioTwo.play();
+  urchinAudio.play();
 });
 
 seaweed.addEventListener("mouseup", (event) => {
   console.log("seaweed is no longer clicked");
-  testAudioTwo.pause();
-  testAudioTwo.currentTime = 0;
+  urchinAudio.pause();
+  urchinAudio.currentTime = 0;
 });
 
 //listen for angler element being pressed
@@ -76,13 +83,13 @@ let angler = document.getElementById("angler");
 
 angler.addEventListener("mousedown", (event) => {
   console.log("angler was clicked");
-  testAudioThree.play();
+  seaangelAudio.play();
 });
 
 angler.addEventListener("mouseup", (event) => {
   console.log("angler is no longer clicked");
-  testAudioThree.pause();
-  testAudioThree.currentTime = 0;
+  seaangelAudio.pause();
+  seaangelAudio.currentTime = 0;
 });
 
 //listen for angel element being pressed
@@ -91,13 +98,13 @@ let angel = document.getElementById("angel");
 
 angel.addEventListener("mousedown", (event) => {
   console.log("angel was clicked");
-  testAudioThree.play();
+  jellyAudio.play();
 });
 
 angel.addEventListener("mouseup", (event) => {
   console.log("angel is no longer clicked");
-  testAudioThree.pause();
-  testAudioThree.currentTime = 0;
+  jellyAudio.pause();
+  jellyAudio.currentTime = 0;
 });
 
 //listen for urchin element being pressed
@@ -106,13 +113,13 @@ let urchin = document.getElementById("urchin");
 
 urchin.addEventListener("mousedown", (event) => {
   console.log("urchin was clicked");
-  testAudioThree.play();
+  chordAudio.play();
 });
 
 urchin.addEventListener("mouseup", (event) => {
   console.log("urchin is no longer clicked");
-  testAudioThree.pause();
-  testAudioThree.currentTime = 0;
+  chordAudio.pause();
+  chordAudio.currentTime = 0;
 });
 
 //listen for eel element being pressed
@@ -121,13 +128,13 @@ let eel = document.getElementById("eel");
 
 eel.addEventListener("mousedown", (event) => {
   console.log("eel was clicked");
-  testAudioThree.play();
+  lobAudio.play();
 });
 
 eel.addEventListener("mouseup", (event) => {
   console.log("eel is no longer clicked");
-  testAudioThree.pause();
-  testAudioThree.currentTime = 0;
+  lobAudio.pause();
+  lobAudio.currentTime = 0;
 });
 
 //tracking the mouse move
