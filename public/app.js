@@ -113,7 +113,7 @@ function showPopup(creatureText) {
     overlay.style.visibility = "hidden";
 
     //is working - do I want it to stop when continue is pressed?
-    planktonAudio.pause();
+    // planktonAudio.pause();
 
     //trying to get a new cursor when user clicks the "continue button" -- not working currently
     // function getCursorElement(id, cursorImage) {
@@ -133,23 +133,26 @@ function showPopup(creatureText) {
 
 //PLANKTON 1
 let plankton = document.getElementById("plankton");
+
+//something that shows that the element is playing - on page load, tell a new person what is playing - trigger those to turn on
+
 plankton.addEventListener("click", (event) => {
+  socket.emit("plankton", { name: userName });
+});
+
+socket.on("plankton", function (data) {
   if (planktonIsPlaying) {
     planktonAudio.pause();
     planktonAudio.currentTime = 0; //reset to beginning
     planktonIsPlaying = false;
   } else {
-    socket.emit("plankton", { name: userName });
-    // planktonAudio.play();
     planktonIsPlaying = true;
     creatureText =
       "Plankton get their name from the Greek word planktos, meaning drifter, precisely because they have no choice but to go where the currents take them. As they evolved over the past 1000 years, they learned how to harness this power and take others with them along for the ride. We now use plankton and the ocean currents as transportation, never quite knowing where we’ll end up but content to go with the flow. ";
     showPopup(creatureText);
-    // Listen for message 'plankton' from the server if it has been pressed
-    socket.on("plankton", function (data) {
-      planktonAudio.play();
-      console.log("plankton is being pressed by:" + data.name);
-    });
+
+    planktonAudio.play();
+    // console.log("plankton is being pressed by:" + data.name);
   }
 });
 
@@ -166,7 +169,7 @@ seaweed.addEventListener("click", (event) => {
     // Listen for message 'seaweed' from the server if it has been pressed
     socket.on("seaweed", function (data) {
       seaweedAudio.play();
-      console.log("seaweed is being pressed by:" + data.name);
+      // console.log("seaweed is being pressed by:" + data.name);
     });
   }
 });
@@ -185,7 +188,7 @@ angler.addEventListener("click", (event) => {
     // Listen for message 'seaweed' from the server if it has been pressed
     socket.on("angler", function (data) {
       anglerAudio.play();
-      console.log("angler is being pressed by:" + data.name);
+      // console.log("angler is being pressed by:" + data.name);
     });
   }
 });
@@ -204,7 +207,7 @@ angel.addEventListener("click", (event) => {
     // Listen for message 'angel' from the server if it has been pressed
     socket.on("angel", function (data) {
       seaangelAudio.play();
-      console.log("angel is being pressed by:" + data.name);
+      // console.log("angel is being pressed by:" + data.name);
     });
   }
 });
@@ -223,7 +226,7 @@ urchin.addEventListener("click", (event) => {
     // Listen for message 'plankton' from the server if it has been pressed
     socket.on("urchin", function (data) {
       seaweed2Audio.play();
-      console.log("urchin was pressed by:" + data.name);
+      // console.log("urchin was pressed by:" + data.name);
     });
   }
 });
@@ -241,7 +244,7 @@ eel.addEventListener("click", (event) => {
     // Listen for message 'eel' from the server if it has been pressed
     socket.on("eel", function (data) {
       eelAudio.play();
-      console.log("eel was pressed by:" + data.name);
+      // console.log("eel was pressed by:" + data.name);
     });
   }
 });
@@ -259,7 +262,7 @@ gearsnail.addEventListener("mousedown", (event) => {
     // Listen for message 'eel' from the server if it has been pressed
     socket.on("gearsnail", function (data) {
       gearsnailAudio.play();
-      console.log("gearsnail was pressed by:" + data.name);
+      // console.log("gearsnail was pressed by:" + data.name);
     });
   }
 });
@@ -280,7 +283,7 @@ jelly.addEventListener("click", (event) => {
     // Listen for message 'eel' from the server if it has been pressed
     socket.on("jelly", function (data) {
       jellyAudio.play();
-      console.log("jelly was pressed by:" + data.name);
+      // console.log("jelly was pressed by:" + data.name);
     });
   }
 });
