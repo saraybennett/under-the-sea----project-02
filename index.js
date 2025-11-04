@@ -34,23 +34,30 @@ io.on("connection", (socket) => {
     // Broadcast updated user data to all clients
     io.sockets.emit("userData", data);
   });
-//PLANKTON
+
+  //PLANKTON
   //listen for plankton mousedown
   socket.on("plankton", function (data) {
-    console.log("plankton is being pressed by " + data.name);
+    console.log("plankton was pressed by " + data.name);
 
     //send this info to everyone
     io.emit("plankton", data);
   });
+  // socket.on("plankton", function (data) {
+  //   console.log("plankton is being pressed by " + data.name);
+
+  //   //send this info to everyone
+  //   io.emit("plankton", data);
+  // });
 
   //listen for plankton mouseup
-  socket.on("plankton-not-pressed", function (data) {
-    console.log("plankton is not being pressed by " + data.name);
+  // socket.on("plankton-not-pressed", function (data) {
+  //   console.log("plankton is not being pressed by " + data.name);
 
-    //send this info to everyone
-    io.emit("plankton-not-pressed", data);
-  });
-//SEAWEED
+  //   //send this info to everyone
+  //   io.emit("plankton-not-pressed", data);
+  // });
+  //SEAWEED
   //listen for seaweed mousedown
   socket.on("seaweed", function (data) {
     console.log("seaweed is being pressed by " + data.name);
@@ -62,7 +69,7 @@ io.on("connection", (socket) => {
     console.log("seaweed is not being pressed by " + data.name);
     io.emit("seaweed-not-pressed", data);
   });
-//ANGLER
+  //ANGLER
   //listen for angler mousedown
   socket.on("angler", function (data) {
     console.log("angler is being pressed by " + data.name);
@@ -74,7 +81,7 @@ io.on("connection", (socket) => {
     console.log("angler is not being pressed by " + data.name);
     io.emit("angler-not-pressed", data);
   });
-//JELLY
+  //JELLY
   //listen for jelly mousedown
   socket.on("jelly", function (data) {
     console.log("jelly is being pressed by " + data.name);
@@ -86,7 +93,7 @@ io.on("connection", (socket) => {
     console.log("jelly is not being pressed by " + data.name);
     io.emit("jelly-not-pressed", data);
   });
-//URCHIN
+  //URCHIN
   //listen for urchin mousedown
   socket.on("urchin", function (data) {
     console.log("urchin is being pressed by " + data.name);
@@ -98,7 +105,7 @@ io.on("connection", (socket) => {
     console.log("urchin is not being pressed by " + data.name);
     io.emit("urchin-not-pressed", data);
   });
-//EEL
+  //EEL
   //listen for eel mousedown
   socket.on("eel", function (data) {
     console.log("eel is being pressed by " + data.name);
@@ -112,7 +119,7 @@ io.on("connection", (socket) => {
   });
 
   //ANGEL
- //listen for angel mousedown
+  //listen for angel mousedown
   socket.on("angel", function (data) {
     console.log("angel is being pressed by " + data.name);
     io.emit("angel", data);
@@ -123,8 +130,8 @@ io.on("connection", (socket) => {
     console.log("angel is not being pressed by " + data.name);
     io.emit("angel-not-pressed", data);
   });
-//SEAWEED2
- //listen for seaweed2 mousedown
+  //SEAWEED2
+  //listen for seaweed2 mousedown
   socket.on("seaweed2", function (data) {
     console.log("seaweed2 is being pressed by " + data.name);
     io.emit("seaweed2", data);
@@ -135,8 +142,8 @@ io.on("connection", (socket) => {
     console.log("seaweed2 is not being pressed by " + data.name);
     io.emit("seaweed2-not-pressed", data);
   });
-//GEAR
-   //listen for gearsnail mousedown
+  //GEAR
+  //listen for gearsnail mousedown
   socket.on("gearsnail", function (data) {
     console.log("gearsnail is being pressed by " + data.name);
     io.emit("gearsnail", data);
@@ -148,15 +155,14 @@ io.on("connection", (socket) => {
     io.emit("gearsnail-not-pressed", data);
   });
 
-
   //draw cursor - not working rn
   socket.on("draw_cursor", (data) => {
     io.emit("draw_cursor", { line: data.line, id: socket.id });
   });
 
   //listen for client disconnect
-  socket.on("disconnect", function(){
-    console.log("Client has disconnected: " + socket.id);  
+  socket.on("disconnect", function () {
+    console.log("Client has disconnected: " + socket.id);
   });
 });
 

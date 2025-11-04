@@ -94,11 +94,17 @@ plankton.addEventListener("click", (event) => {
     // planktonAudio.play();
     planktonIsPlaying = true;
     // Listen for message 'plankton' from the server if it has been pressed
-    socket.on("plankton", function (data) {
-      planktonAudio.play();
-      console.log("plankton is being pressed by:" + data.name);
-    });
+    // socket.on("plankton", function (data) {
+    //   planktonAudio.play();
+    //   console.log("plankton is being pressed by:" + data.name);
+    // });
   }
+});
+
+// Listen for message 'plankton' from the server if it has been pressed & play audio for everyoone
+socket.on("plankton", function (data) {
+  planktonAudio.play();
+  console.log("plankton is being pressed by:" + data.name);
 });
 
 //listen for plankton pressed down
