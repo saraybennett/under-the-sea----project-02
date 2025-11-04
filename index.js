@@ -7,6 +7,11 @@ app.use("/", express.static("public"));
 //Initialize HTTP server
 let http = require("http");
 let server = http.createServer(app);
+//local port
+// let port = process.env.PORT || 3000;
+// server.listen(port, () => {
+//   console.log("App listening at port: " + port);
+// });
 
 //Initialize socket.io
 let io = require("socket.io");
@@ -29,7 +34,7 @@ io.on("connection", (socket) => {
     // Broadcast updated user data to all clients
     io.sockets.emit("userData", data);
   });
-
+//PLANKTON
   //listen for plankton mousedown
   socket.on("plankton", function (data) {
     console.log("plankton is being pressed by " + data.name);
@@ -45,10 +50,113 @@ io.on("connection", (socket) => {
     //send this info to everyone
     io.emit("plankton-not-pressed", data);
   });
+//SEAWEED
+  //listen for seaweed mousedown
+  socket.on("seaweed", function (data) {
+    console.log("seaweed is being pressed by " + data.name);
+    io.emit("seaweed", data);
+  });
+
+  //listen for seaweed mouseup
+  socket.on("seaweed-not-pressed", function (data) {
+    console.log("seaweed is not being pressed by " + data.name);
+    io.emit("seaweed-not-pressed", data);
+  });
+//ANGLER
+  //listen for angler mousedown
+  socket.on("angler", function (data) {
+    console.log("angler is being pressed by " + data.name);
+    io.emit("angler", data);
+  });
+
+  //listen for angler mouseup
+  socket.on("angler-not-pressed", function (data) {
+    console.log("angler is not being pressed by " + data.name);
+    io.emit("angler-not-pressed", data);
+  });
+//JELLY
+  //listen for jelly mousedown
+  socket.on("jelly", function (data) {
+    console.log("jelly is being pressed by " + data.name);
+    io.emit("jelly", data);
+  });
+
+  //listen for jelly mouseup
+  socket.on("jelly-not-pressed", function (data) {
+    console.log("jelly is not being pressed by " + data.name);
+    io.emit("jelly-not-pressed", data);
+  });
+//URCHIN
+  //listen for urchin mousedown
+  socket.on("urchin", function (data) {
+    console.log("urchin is being pressed by " + data.name);
+    io.emit("urchin", data);
+  });
+
+  //listen for urchin mouseup
+  socket.on("urchin-not-pressed", function (data) {
+    console.log("urchin is not being pressed by " + data.name);
+    io.emit("urchin-not-pressed", data);
+  });
+//EEL
+  //listen for eel mousedown
+  socket.on("eel", function (data) {
+    console.log("eel is being pressed by " + data.name);
+    io.emit("eel", data);
+  });
+
+  //listen for eel mouseup
+  socket.on("eel-not-pressed", function (data) {
+    console.log("eel is not being pressed by " + data.name);
+    io.emit("eel-not-pressed", data);
+  });
+
+  //ANGEL
+ //listen for angel mousedown
+  socket.on("angel", function (data) {
+    console.log("angel is being pressed by " + data.name);
+    io.emit("angel", data);
+  });
+
+  //listen for angel mouseup
+  socket.on("angel-not-pressed", function (data) {
+    console.log("angel is not being pressed by " + data.name);
+    io.emit("angel-not-pressed", data);
+  });
+//SEAWEED2
+ //listen for seaweed2 mousedown
+  socket.on("seaweed2", function (data) {
+    console.log("seaweed2 is being pressed by " + data.name);
+    io.emit("seaweed2", data);
+  });
+
+  //listen for seaweed2 mouseup
+  socket.on("seaweed2-not-pressed", function (data) {
+    console.log("seaweed2 is not being pressed by " + data.name);
+    io.emit("seaweed2-not-pressed", data);
+  });
+//GEAR
+   //listen for gearsnail mousedown
+  socket.on("gearsnail", function (data) {
+    console.log("gearsnail is being pressed by " + data.name);
+    io.emit("gearsnail", data);
+  });
+
+  //listen for gearsnail mouseup
+  socket.on("gearsnail-not-pressed", function (data) {
+    console.log("gearsnail is not being pressed by " + data.name);
+    io.emit("gearsnail-not-pressed", data);
+  });
+
 
   //draw cursor - not working rn
   socket.on("draw_cursor", (data) => {
     io.emit("draw_cursor", { line: data.line, id: socket.id });
+  });
+
+  //listen for client disconnect
+  socket.on("disconnect", function(){
+    console.log("Client has disconnected: " + socket.id);  
   });
 });
 
