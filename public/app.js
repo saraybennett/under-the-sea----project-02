@@ -2,17 +2,35 @@ console.log("hi");
 
 //global variables
 const planktonAudio = new Audio("./audio/plankton.mp3");
+planktonAudio.loop = true;
+
 const seaweed2Audio = new Audio("./audio/seaweed2.mp3");
+seaweed2Audio.loop = true;
+
 const eelAudio = new Audio("./audio/eel.mp3");
+eelAudio.loop = true;
+
 const seaangelAudio = new Audio("./audio/seaangel.mp3");
+seaangelAudio.loop = true;
+
 const jellyAudio = new Audio("./audio/jelly.mp3");
+jellyAudio.loop = true;
+
 const urchinAudio = new Audio("./audio/urchin.mp3"); //currently not hearing this, can add with the green seaweed if we want
+urchinAudio.loop = true;
+
 const gearsnailAudio = new Audio("./audio/gearsnail.mp3");
+gearsnailAudio.loop = true;
+
 const seaweedAudio = new Audio("./audio/seaweed.mp3");
+seaweedAudio.loop = true;
+
 const anglerAudio = new Audio("./audio/angler.mp3");
+anglerAudio.loop = true;
 
 //if we want a background just affected by mouse positions / filters
 const backgroundAudio = new Audio("./audio/background.mp3");
+backgroundAudio.loop = true;
 
 let users = {};
 let socket; //make sure this is declared in the global scope!
@@ -106,14 +124,14 @@ plankton.addEventListener("click", (event) => {
 
 socket.on("plankton", function (data) {
   if (planktonIsPlaying) {
-    planktonAudio.pause();
-    planktonAudio.currentTime = 0; //reset to beginning
+    seaangelAudio.pause();
+    seaangelAudio.currentTime = 0; //reset to beginning
     planktonIsPlaying = false;
-    //add something here to show plankton is playing - either change css or point to a new html src
+    plankton.classList.remove("playing"); // Remove animation
   } else {
-    //revert image back to normal to indicate nothing is playing
     planktonIsPlaying = true;
-    planktonAudio.play();
+    seaangelAudio.play();
+    plankton.classList.add("playing"); // Add animation
   }
 });
 
@@ -132,9 +150,11 @@ socket.on("seaweed", function (data) {
     seaweedAudio.pause();
     seaweedAudio.currentTime = 0; //reset to beginning
     seaweedIsPlaying = false;
+    seaweed.classList.remove("playing"); // Remove animation
   } else {
     seaweedIsPlaying = true;
     seaweedAudio.play();
+    seaweed.classList.add("playing"); // Add animation
   }
 });
 
@@ -153,9 +173,11 @@ socket.on("angler", function (data) {
     anglerAudio.pause();
     anglerAudio.currentTime = 0; //reset to beginning
     anglerIsPlaying = false;
+    angler.classList.remove("playing"); // Remove animation
   } else {
     anglerIsPlaying = true;
     anglerAudio.play();
+    angler.classList.add("playing"); // Add animation
   }
 });
 
@@ -165,19 +187,20 @@ let angel = document.getElementById("angel");
 angel.addEventListener("click", (event) => {
   socket.emit("angel", { name: userName });
   creatureText =
-    "Sea angels protect themselves by absorbing a noxious molecule that keeps other creatures from eating them. With the help of active sonar technology, sea angels furthered these capabilities and now serve as the main peace guardians of our society. We’re currently enlisting their help in protecting our underwater energy centers from the eels.  ";
+    "Sea angels protected themselves by absorbing a noxious molecule that keeps other creatures from eating them. We now use this molecule to protect our vulnerable truth tellers. Sea angels are known as peace guardians of our society, after they adapted from living in the highest density and deepest oceans in the world they rose to shallow waters and represented a shift in a time of peace for humanity.";
   showPopup(creatureText);
 });
 
 socket.on("angel", function (data) {
   if (angelIsPlaying) {
-    seaangelAudio.pause();
-    seaangelAudio.currentTime = 0; //reset to beginning
+    backgroundAudio.pause();
+    backgroundAudio.currentTime = 0; //reset to beginning
     angelIsPlaying = false;
+    angel.classList.remove("playing"); // Remove animation
   } else {
-    socket.emit("angel", { name: userName });
     angelIsPlaying = true;
-    seaangelAudio.play();
+    backgroundAudio.play();
+    angel.classList.add("playing"); // Add animation
   }
 });
 
@@ -186,7 +209,7 @@ let urchin = document.getElementById("urchin");
 
 urchin.addEventListener("click", (event) => {
   socket.emit("urchin", { name: userName });
-  creatureText = "ENTER TEXT HERE!! ";
+  creatureText = "Urchins now travel in groups, their intricate spiny structures create vast underwater expanses that catch and process plastic waste and nuclear fallout, releasing carbon and nitrogen back into the water and atmosphere. They have become essential to maintaining the health of our oceans and atmosphere, and we work closely with them to ensure their continued survival and success.";
   showPopup(creatureText);
 });
 
@@ -195,10 +218,11 @@ socket.on("urchin", function (data) {
     seaweed2Audio.pause();
     seaweed2Audio.currentTime = 0; //reset to beginning
     urchinIsPlaying = false;
+    urchin.classList.remove("playing"); // Remove animation
   } else {
     urchinIsPlaying = true;
-
     seaweed2Audio.play();
+    urchin.classList.add("playing"); // Add animation
   }
 });
 
@@ -208,7 +232,7 @@ let eel = document.getElementById("eel");
 eel.addEventListener("click", (event) => {
   socket.emit("eel", { name: userName });
   creatureText =
-    "One thousand years ago, electric eels averaged six feet and the most powerful could generate 860 volts of electricity. Nowadays, eels can be longer than fifteen feet and generate enough power to run a small house. We learned how to harness this power and now rely on them as one of our main sources of renewable electricity. But some eels resent how dependent we’ve become on them and so utilize their enhanced electric capabilities to attack our underwater energy centers.  ";
+    "Electric eels averaged six feet and the most powerful could generate 860 volts of electricity. Nowadays, eels are up to 200 feet and generate enough power to run small towns. Factions of cooperating eels help cultivate power and have become a main power source for coastal towns. Other factions of eels have become more aggressive, using their electric abilities to defend their territory in intricate underwater grids maintained to keep the independance and autonomy of sea freedom for those uninterested in collaborating with humans.";
   showPopup(creatureText);
 });
 
@@ -217,9 +241,11 @@ socket.on("eel", function (data) {
     eelAudio.pause();
     eelAudio.currentTime = 0; //reset to beginning
     eelIsPlaying = false;
+    eel.classList.remove("playing"); // Remove animation
   } else {
     eelIsPlaying = true;
     eelAudio.play();
+    eel.classList.add("playing"); // Add animation
   }
 });
 
@@ -227,7 +253,7 @@ socket.on("eel", function (data) {
 let gearsnail = document.getElementById("gearsnail");
 gearsnail.addEventListener("click", (event) => {
   socket.emit("gearsnail", { name: userName });
-  creatureText = "ENTER TEXT HERE ";
+  creatureText = "Gear Snails have bio engineered shells made of interlocking gears. With an incredibly slow metabolism their biology requires them to traverse 100 miles a day to survive, many of them help process eel power while their shells are used once they die to form necessary parts for regenerative mining and compounds for our rare city center tech nodes. They are a protected and revered species, though despite their adaptations they are a valuable contributor and some are poached for their shells.";
   showPopup(creatureText);
 });
 
@@ -236,10 +262,11 @@ socket.on("gearsnail", function (data) {
     gearsnailAudio.pause();
     gearsnailAudio.currentTime = 0; //reset to beginning
     snailIsPlaying = false;
+    gearsnail.classList.remove("playing"); // Remove animation
   } else {
     snailIsPlaying = true;
-
     gearsnailAudio.play();
+    gearsnail.classList.add("playing"); // Add animation
   }
 });
 
@@ -249,7 +276,7 @@ socket.on("gearsnail", function (data) {
 let jelly = document.getElementById("jelly");
 jelly.addEventListener("click", (event) => {
   socket.emit("jelly", { name: userName });
-  creatureText = "ENTER TEXT HERE ";
+  creatureText = "Jellyfish have adapted with high concentrations of Mercury. They are mostly left alone due to Mercury's toxic effects on humanity but are visible signs of the ocean's health - similar to a thermometer's function they rise as the temperature of the ocean rises and we are able to identify patterns and disruptions immediately with the observation of these adapted Jellyfish.";
   showPopup(creatureText);
 });
 
@@ -258,10 +285,11 @@ socket.on("jelly", function (data) {
     jellyAudio.pause();
     jellyAudio.currentTime = 0; //reset to beginning
     jellyIsPlaying = false;
+    jelly.classList.remove("playing"); // Remove animation
   } else {
     jellyIsPlaying = true;
-
     jellyAudio.play();
+    jelly.classList.add("playing"); // Add animation
   }
 });
 
